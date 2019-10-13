@@ -1,7 +1,9 @@
-var express = require('express')
-var router = express.Router()
+const express = require('express')
+const router = express.Router()
 
-var audio = require('../audio')
+const audio = require('../audio')
+const translate = require('../translate')
+
 var record_audio = audio.record_audio
 var recognize_audio = audio.recognize_audio
 
@@ -13,7 +15,8 @@ router.get('/', function(req, res, next) {
 router.post('/start', function(req, res, next) {
 	record_audio.stream().pipe(recognize_audio)
 	recognize_audio.on("data", data => {
-		console.log(data.results[0])
+		str = data.results[0].alternatives[0].transcript
+		console.log(translate.process_string(str))
 	})
 })
 
@@ -24,6 +27,7 @@ router.post('/stop', function(req, res, next) {
 
 router.post('/resume', function(req, res, next) {
 	record_audio.resume()
+	console.log("we up")
 })
 
 module.exports = router;

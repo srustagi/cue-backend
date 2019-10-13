@@ -16,7 +16,7 @@ var process_string = (str) => {
 	result = tagger.tag(result)
 	var final_result = []
 	for (var i = result.taggedWords.length - 1; i >= 0; i--) {
-		if(result.taggedWords[i].tag == "VB" || result.taggedWords[i].tag == "NN" || result.taggedWords[i].tag == "NNS" || result.taggedWords[i].tag == "JJ") {
+		if(result.taggedWords[i].tag == "VB" || result.taggedWords[i].tag == "NN" || result.taggedWords[i].tag == "NNS" || result.taggedWords[i].tag == "JJ" || result.taggedWords[i].tag == "VBD") {
 			final_result.unshift(result.taggedWords[i])
 		}
 	}
@@ -28,10 +28,11 @@ var get_image = async(q) => {
 	var api_key = "AIzaSyCGyMoHIWlbHc5qgHNt2NDzIr9KxAxMAHU"
 	var search_engine_id = "012908347918381086857:7phowmgmyn9"
 	var uri = endpoint + "key=" + api_key + "&cx=" + search_engine_id + "&q=" + encodeURIComponent(q)
-	var result
 	result = await request(uri)
-	console.log(JSON.parse(result).items[0].link)
 	return result
 }
 
-get_image("elmo")
+module.exports.process_string = process_string
+module.exports.get_image = get_image
+
+// get_image("elmo").then((result) => {console.log(JSON.parse(result).items[0].link)})
