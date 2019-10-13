@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <form action="/start" method="post">
+    	<button type="submit">Start</button>	
+    </form>
+    <form action="/stop" method="post">
+    	<button type="submit">Done</button>
+    </form>
+    <form action="/resume" method="post">
+    	<button type="submit">Resume</button>
+    </form>
+  </body>
+</html>
