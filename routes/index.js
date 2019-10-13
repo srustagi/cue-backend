@@ -16,7 +16,8 @@ router.post('/start', function(req, res, next) {
 	record_audio.stream().pipe(recognize_audio)
 	recognize_audio.on("data", data => {
 		str = data.results[0].alternatives[0].transcript
-		console.log(translate.process_string(str))
+		str = JSON.stringify(translate.process_string(str))
+		res.end(str)
 	})
 })
 
