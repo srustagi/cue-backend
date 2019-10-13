@@ -22,12 +22,12 @@ router.post('/start', function(req, res, next) {
 
 router.post('/stop', function(req, res, next) {
 	record_audio.pause()
-	console.log("this is happening")
+	console.log("paused")
 })
 
 router.post('/resume', function(req, res, next) {
 	record_audio.resume()
-	console.log("we up")
+	console.log("resumed")
 })
 
 module.exports = router;
