@@ -45,7 +45,7 @@ var process_string = str => {
 var get_image = q => {
   var endpoint =
     "https://www.googleapis.com/customsearch/v1?num=1&searchType=image&";
-  var api_key = "AIzaSyCGyMoHIWlbHc5qgHNt2NDzIr9KxAxMAHU";
+  var api_key = "API_KEY_HERE";
   var search_engine_id = "012908347918381086857:7phowmgmyn9";
   var uri =
     endpoint +
